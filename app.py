@@ -1,5 +1,6 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 import pickle
 import pandas as pd
@@ -9,6 +10,7 @@ df=pd.read_csv("faqs.csv",encoding="ISO-8859-1")
 
 
 app = Flask(__name__)
+
 model = pickle.load(open('model1.pkl', 'rb'))
 
 @app.route('/')
@@ -20,11 +22,12 @@ def predict():
     '''
     For rendering results on HTML GUI'''
     
-    '''df1=df.replace(to_replace=' ',value=np.nan).dropna()
-    df1['Question']=df1['Question'].fillna("sry try again",inplace=True)'''
+
     i=1
     while i==1:
-        int1 = (x for x in request.form.values())
+        int1 = [x for x in request.form.values()]
+        for i in range(len(int1)):
+            int1[i]=int1[i].lower()
         def text_seperation (x):
             return x.split()
         bow_transformer = CountVectorizer(analyzer=text_seperation).fit(df['Question'])
