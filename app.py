@@ -1,6 +1,5 @@
 import numpy as np
 from flask import Flask, request, jsonify, render_template
-from flask_cors import CORS
 from sklearn.feature_extraction.text import CountVectorizer, TfidfTransformer
 import pickle
 import pandas as pd
