@@ -5,7 +5,7 @@ Jinja2==3.0.3
 MarkupSafe==2.1.0
 Werkzeug==2.0.3
 numpy>=1.21.
-scipy==1.8.0
+scipy==1.7.0
 scikit-learn>=0.18
 matplotlib==3.5.1
 pandas==1.4.1
